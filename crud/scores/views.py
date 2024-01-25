@@ -5,5 +5,12 @@ from django.shortcuts import render
 def home(request):
     return render(request, 'index.html')
 
+def about(request):
+    return render(request, 'about.html')
+
+def contact(request):
+    return render(request, 'contact.html')
+
+
 def all_scores(request):
     return render(request, 'scores/all_scores.html')
