@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+
+{% block title %}
+        Score - Edit
+{% endblock %}
+
+{% block main %}
+        <h3>Edit the item :</h3>
+        <form action="{% url 'edit' score.id %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Update</button>
+        </form>
+{% endblock %}
