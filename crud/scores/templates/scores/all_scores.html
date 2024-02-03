@@ -5,5 +5,15 @@
 {% endblock %}
 
 {% block main %}
-        All Scores !!!
+        <h1>List of Scores :</h1>
+        <h4><a href="{% url 'add' %}">Add a score</a></h4>
+        <hr>
+        {% if scores %}
+        {% for score in scores %}
+        <h3><a href="{% url 'score_detail' score.id %}">{{ score.name }}</a></h3>
+        <p>Score : {{ score.score }}</p>
+        {% endfor %}
+        {% else %}
+        <h2>No Scores available!!!</h2>
+        {% endif %}
 {% endblock %}

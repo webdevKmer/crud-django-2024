@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS =  ['https://8000-webdevkmer-cruddjango20-5gnbmzimft7.ws-eu107.gitpod.io']
+CSRF_TRUSTED_ORIGINS =  ['https://8000-webdevkmer-cruddjango20-5gnbmzimft7.ws-eu107.gitpod.io', 'https://8000-webdevkmer-cruddjango20-5gnbmzimft7.ws-eu108.gitpod.io']
 
 # Application definition
 

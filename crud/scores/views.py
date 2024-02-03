@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import Score
+from .forms import AddForm
 
 # Create your views here.
 
@@ -11,6 +13,46 @@ def about(request):
 def contact(request):
     return render(request, 'contact.html')
 
+def delete(request, pk):
+    Score.objects.get(id=pk).delete()
+    return redirect('scores')
+
+def edit_score(request, pk):
+    item = Score.objects.get(id=pk)
+    form = AddForm(instance=item)
+    if request.method == 'POST':
+        form = AddForm(request.POST, instance=item)
+        if form.is_valid():
+            form.save()
+            return redirect('scores')
+    context = {
+        'form' : form,
+        'score' : item
+    }
+    return render(request, 'scores/edit.html', context)
+
+def add_score(request):
+    form = AddForm()
+    if request.method == 'POST':
+        form = AddForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('scores')
+    context = {
+        'form' : form
+    }
+    return render(request, 'scores/add.html', context)
+
+def score_detail(request, pk):
+    score = Score.objects.get(id=pk)
+    context = {
+        'score' : score
+    }
+    return render(request, 'scores/detail.html', context)
 
 def all_scores(request):
-    return render(request, 'scores/all_scores.html')
+    scores = Score.objects.all()
+    context = {
+        'scores' : scores,
+    }
+    return render(request, 'scores/all_scores.html', context)
