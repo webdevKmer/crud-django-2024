@@ -1,9 +1,13 @@
 {% extends 'base.html'%}
 
 {% block title %}
-        Score Detail
+        Score - {{ score.name }}
 {% endblock %}
 
-{% block Main %}
-        Score Detail Page
+{% block main %}
+        <h3>{{ score.id }} - <strong>{{ score.name }}</strong></h3>
+        <hr>
+        <h4>Score : {{ score.score }}</h4>
+        <a href="{% url 'edit' score.id %}">Edit</a>
+        <a href="{% url 'delete' score.id %}">Delete</a>
 {% endblock %}
