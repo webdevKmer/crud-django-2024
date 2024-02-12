@@ -1,12 +1,12 @@
 {% extends 'base.html'%}
 
 {% block title %}
-        Score - Add
+        Student - Add
 {% endblock %}
 
 {% block main %}
-        <h3>Add a score :</h3>
-        <form action="{% url 'scores:add' %}" method="post">
+        <h3>Add a Student :</h3>
+        <form action="{% url 'students:add' %}" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button type="submit">Add</button>

@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+
+{% block title %}
+        All Students
+{% endblock %}
+
+{% block main %}
+<h1>List of Students :</h1>
+        <h4><a href="{% url 'students:add' %}">Add a Student</a></h4>
+        <hr>
+        {% if students %}
+        {% for student in students %}
+        <p>ID # {{ student.id }} <a href="{% url 'students:detail' student.id %}"><strong>{{ student.name }}</strong></a></p>
+        {% endfor %}
+        {% else %}
+        <h2>No students available!!!</h2>
+        {% endif %}
+{% endblock %}

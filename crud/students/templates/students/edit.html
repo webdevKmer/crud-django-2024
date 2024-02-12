@@ -1,12 +1,12 @@
 {% extends 'base.html'%}
 
 {% block title %}
-        Score - Edit
+        Student - Edit
 {% endblock %}
 
 {% block main %}
-        <h3>Edit the item :</h3>
-        <form action="{% url 'scores:edit' score.id %}" method="post">
+        <h3>Modify Student Details :</h3>
+        <form action="{% url 'students:edit' student.id %}" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button type="submit">Update</button>

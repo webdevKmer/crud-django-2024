@@ -15,35 +15,35 @@ def contact(request):
 
 def delete(request, pk):
     Score.objects.get(id=pk).delete()
-    return redirect('scores')
+    return redirect('scores:all')
 
-def edit_score(request, pk):
+def edit(request, pk):
     item = Score.objects.get(id=pk)
     form = AddForm(instance=item)
     if request.method == 'POST':
         form = AddForm(request.POST, instance=item)
         if form.is_valid():
             form.save()
-            return redirect('scores')
+            return redirect('scores:all')
     context = {
         'form' : form,
         'score' : item
     }
     return render(request, 'scores/edit.html', context)
 
-def add_score(request):
+def add(request):
     form = AddForm()
     if request.method == 'POST':
         form = AddForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('scores')
+            return redirect('scores:all')
     context = {
         'form' : form
     }
     return render(request, 'scores/add.html', context)
 
-def score_detail(request, pk):
+def detail(request, pk):
     score = Score.objects.get(id=pk)
     context = {
         'score' : score

@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+
+{% block title %}
+        Student - {{ student.name }}
+{% endblock %}
+
+{% block main %}
+        <h3>{{ student.id }} - <strong>{{ student.name }}</strong></h3>
+        <a href="{% url 'students:edit' student.id %}">Edit</a>
+        <a href="{% url 'students:delete' student.id %}">Delete</a>
+        <hr>
+        <h3>List of scores :</h3>
+        <hr>
+        {% if scores %}
+        {{ scores }}
+        {% comment %} {% for score in scores %}
+        <p>Score : {{ score }}</p>
+        {% endfor %} {% endcomment %}
+        {% else %}
+        No Scores yet...
+        {% endif %}
+{% endblock %}

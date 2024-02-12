@@ -6,12 +6,11 @@
 
 {% block main %}
         <h1>List of Scores :</h1>
-        <h4><a href="{% url 'add' %}">Add a score</a></h4>
+        <h4><a href="{% url 'scores:add' %}">Add a score</a></h4>
         <hr>
         {% if scores %}
         {% for score in scores %}
-        <h3><a href="{% url 'score_detail' score.id %}">{{ score.name }}</a></h3>
-        <p>Score : {{ score.score }}</p>
+        <p><a href="{% url 'scores:detail' score.id %}"><strong>{{ score.student }}</strong> - Score : {{ score.score }}</a></p>
         {% endfor %}
         {% else %}
         <h2>No Scores available!!!</h2>
